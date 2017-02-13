@@ -1,8 +1,13 @@
-\documentclass[9pt]{scrartcl}
+\documentclass[9pt,ngerman]{scrartcl}
 %%Sprache Deutsche zeichen
+\DeclareSymbolFont{letters}{OT1}{cmr}{m}{n}
+\usepackage{lmodern} 
+\usepackage{arev}
+\renewcommand*\familydefault{\sfdefault} %% schönere Schrift für Schüler
+\usepackage[T1]{fontenc} %% muss vor inoutenc stehen
 \usepackage[utf8]{inputenc}
 
-\usepackage{lmodern} 
+
 
 %%Deutsches Datum und weitere Angaben
 \usepackage[ngerman]{babel}
@@ -11,6 +16,7 @@
 %% Kleinere Überschriften
 \usepackage[font=small,skip=0pt]{caption}
 \usepackage{dirtree}
+\usepackage{dashrule}
 %%Packages Allgemein
 \usepackage{paralist} %Itemize Enumerate in Paragraphs 
 \usepackage{bold-extra} %% Bold smal Text
@@ -63,12 +69,21 @@
 
 \usepackage[os=win]{menukeys} %% einfügen von Tasten
 \usepackage{struktex} %%struktogramme
-
+\usepackage{ziffer}
 %%Packages Mathematik
 \usepackage{amsmath}
 \usepackage{mathtools} %% optimize latex math
 \usepackage[school]{pgf-umlcd}
 %%Schule Allgemein
+
+\usepackage{nicefrac}
+\def\doubleunderline#1{\underline{\underline{#1}}}
+%%Packages Mathematik
+\DeclareMathSymbol{*}{\mathbin}{symbols}{"01} %% Punkt statt *
+\DeclareMathSymbol{,}{\mathord}{letters}{"3B} %% Komma
+%%Schule Allgemein
+\usepackage{pgf-umlsd}
+
 
 \usepackage{pgfplots} %% Plottel
 \usepackage[
@@ -86,7 +101,7 @@ version={4.0},
 
 %%%%Header
 \usepackage{scrlayer-scrpage}
-\ihead{\tiny Informatik}
+\ihead{\tiny Mathematik}
 \chead{\tiny \thema}   %%%%% Set Header always
 \ohead{\tiny \thepage}
 \ofoot{\doclicenseImage[imagewidth=1.5cm]}
