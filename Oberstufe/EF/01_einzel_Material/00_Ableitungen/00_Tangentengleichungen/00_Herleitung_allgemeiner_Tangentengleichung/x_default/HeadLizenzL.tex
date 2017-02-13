@@ -1,7 +1,7 @@
-\documentclass[8pt]{scrartcl}
+\documentclass[9pt]{scrartcl}
 
 %%Variablen Thema der Stunde
-\newcommand{\thema}{Modellierung - Wiederholungsstrukturen }
+\newcommand{\thema}{Modellierung }
 %%%%
 
 %%Sprache Deutsche zeichen
@@ -12,7 +12,7 @@
 %%Deutsches Datum und weitere Angaben
 \usepackage[ngerman]{babel}
 %%Papersize
-\usepackage[a4paper, top=30mm, bottom=10mm, left=0.8in, right=20mm,marginparwidth=68pt]{geometry}
+\usepackage[a4paper, top=30mm, bottom=30mm, left=0.8in, right=20mm,marginparwidth=68pt]{geometry}
 %% Kleinere Überschriften
 \usepackage[font=small,skip=0pt]{caption}
 \usepackage{dirtree}
@@ -37,23 +37,52 @@
 \usepackage{wrapfig}  %%% Texte um Bilder herrum
 \usepackage{booktabs}  %% better Tables
 \usepackage{tcolorbox}
-
+\usepackage{multicol}
 %%Packages Informatik
 \usepackage{listings} %% Typesetting Syntax
+
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+
+\usepackage{listings}
+\lstset{language=Java,
+	showspaces=false,
+	showtabs=false,
+	numbers=left,
+	numberstyle=\tiny\color{black},
+	stepnumber=2,
+	tabsize=4,
+	breaklines=true,
+	showstringspaces=false,
+	breakatwhitespace=true,
+	commentstyle=\color{pgreen},
+	keywordstyle=\color{pblue},
+	stringstyle=\color{pred},
+	basicstyle=\ttfamily,
+	moredelim=[il][\textcolor{pgrey}]{$$},
+	moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
+}
+
+
 \usepackage[os=win]{menukeys} %% einfügen von Tasten
 \usepackage{struktex} %%struktogramme
 
 %%Packages Mathematik
 \usepackage{amsmath}
 \usepackage{mathtools} %% optimize latex math
-
+\usepackage[school]{pgf-umlcd}
 %%Schule Allgemein
-\usepackage{tasks} %% Aufgaben erstellen
-\usepackage{pgfplots} %% Plottel
 
+\usepackage{pgfplots} %% Plottel
+\usepackage[
+type={CC},
+modifier={by-nc-sa},
+version={4.0},
+]{doclicense}
 %%TKIS Libarys
 \usetikzlibrary{trees}
-
 %%% Test if needed
 %\usepackage{url}
 %\usepackage{ifthen}
@@ -62,16 +91,33 @@
 
 %%%%Header
 \usepackage{scrlayer-scrpage}
-\ihead{\tiny Informatik}
+\ihead{\tiny Mathematik}
 \chead{\tiny \thema}   %%%%% Set Header always
 \ohead{\tiny \thepage}
-
+\ofoot{\doclicenseImage[imagewidth=1.5cm]}
+\ifoot{}
+\cfoot{}
 \newdateformat{mydate}{\_\_.\THEMONTH.\THEYEAR}
 
+\newpairofpagestyles[scrheadings]{specialchapter}{
+\ihead{}
+\chead{}   %%%%% Set Header always
+\ohead{}
+\ofoot{\doclicenseImage[imagewidth=1.5cm]}
+\ifoot{}
+\cfoot{}
+}
 
 \newcommand{\marky}[1]{{\colorbox{black}{\color{white} #1}}}
+
+\newcommand{\spielplanEintrag}[3]{\fbox{\parbox{12ex}{\centering {#1} gegen {#2}\newline {#3}}	}}
+\newcommand{\schulkuerzel}{Freiherr-vom-Stein-Gymnasium Hamm\xspace}
+
+\NewDocumentCommand{\anchormark}{O{0.15 cm} m O{0.05}}{%
+	\tikz[overlay,remember picture,baseline=-0.5ex,xshift=#1] \node[draw,fill=black,circle,scale=#3] (#2) {};
+}
 \begin{document}
-\thispagestyle{plain}
+\thispagestyle{specialchapter}
 \parindent 0pt  %% Kein Absatzeinzug
 \vspace*{-1.8cm}
 \hrule 
@@ -85,5 +131,3 @@
 \end{tabularx}
 \vspace{0.1cm}
 \hrule 
-		
-
